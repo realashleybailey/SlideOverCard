@@ -44,6 +44,10 @@ Here, `$isPresented` is a boolean binding. This way you can dismiss the view any
 // This creates a card with no exit button
 .slideOverCard(isPresented: $isPresented, options: [.hideExitButton]) {
 }
+
+// This creates a card that can be dismissed by tapping the greyed out background
+.slideOverCard(isPresented: $isPresented, options: [.tapToHide]) {
+}
 ```
 
 In case you want to execute code when the view is dismissed (either by the exit button or drag controls), you can also set an optional `onDismiss` closure parameter:
@@ -109,4 +113,4 @@ SOCManager.dismiss(isPresented: $isPresented)
 
 # Example
 
-The SwiftUI code for a demo view can be found [here](https://github.com/joogps/SlideOverCard/blob/f6cb0e2bac67555fd74cdadf3e6ca542538f0c23/Sources/SlideOverCard/SlideOverCard.swift#L128). It's an Xcode preview, and you can experience it right within the package, under **Swift Package Dependencies**, in your project.
+The SwiftUI code for a demo view can be found [here](https://github.com/realashleybailey/SlideOverCard/blob/main/Sources/SlideOverCard/SlideOverCard.swift#L142). It's an Xcode preview, and you can experience it right within the package, under **Swift Package Dependencies**, in your project.
