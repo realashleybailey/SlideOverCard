@@ -1,21 +1,18 @@
 <h1> SlideOverCard
-  <img align="right" alt="Project logo" src="../assets/icon-small.png" width=74px>
+  <img align="right" alt="Project logo" src="https://user-images.githubusercontent.com/16636012/135180444-ab03e01a-e4a6-4001-8d27-d6789c37d176.png" width=74px>
 </h1>
 
 <p>
     <img src="https://img.shields.io/badge/iOS-13.0+-blue.svg" />
     <img src="https://img.shields.io/badge/-SwiftUI-red.svg" />
-    <a href="https://twitter.com/joogps">
-        <img src="https://img.shields.io/badge/Contact-@joogps-lightgrey.svg?style=social&logo=twitter" alt="Twitter: @joogps" />
-    </a>
 </p>
 
 A SwiftUI card design, similar to the one used by Apple in HomeKit, AirPods, Apple Card and AirTag setup, NFC scanning, Wi-Fi password sharing and more. It is specially great for setup interactions.
 
 <p>
-    <img alt="Clear Spaces demo" src="../assets/demo-clear-spaces.gif" height=400px>
-    <img alt="QR code scanner demo" src="../assets/demo-qr-code.gif" height=400px>
-    <img alt="Example preview demo" src="../assets/demo-example.gif" height=400px>
+    <img alt="Clear Spaces demo" src="https://user-images.githubusercontent.com/16636012/135180461-8ad246e8-4c45-4eb2-bbc7-f13fd20ca944.gif" height=400px>
+    <img alt="QR code scanner demo" src="https://user-images.githubusercontent.com/16636012/135180452-49f793fa-be21-499d-9bda-b1d7cf4846b0.gif" height=400px>
+    <img alt="Example preview demo" src="https://user-images.githubusercontent.com/16636012/135180447-954b4248-94a9-4ddd-8882-f27d5c0cb117.gif" height=400px>
 </p>
 
 _From left to right: SlideOverCard being used in [Clear Spaces](https://apps.apple.com/us/app/clear-spaces/id1532666619), a QR code scanner prompt (made with [CodeScanner](https://github.com/twostraws/CodeScanner)) and a demo of the project's Xcode preview_
