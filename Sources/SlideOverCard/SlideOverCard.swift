@@ -63,24 +63,22 @@ public struct SlideOverCard<Content: View>: View {
                         }
                     }
                     
-                    group.zIndex(2)
+                    Group {
+                        if #available(iOS 14.0, *) {
+                            container
+                                .ignoresSafeArea(.container, edges: .bottom)
+                        } else {
+                            container
+                                .edgesIgnoringSafeArea(.bottom)
+                        }
+                    }
+                    .transition(isiPad ? AnyTransition.opacity.combined(with: .offset(x: 0, y: 200)) : .move(edge: .bottom))
+                    .zIndex(2)
                 }
             }.animation(.spring(response: 0.35, dampingFraction: 1))
         } else {
-            group
+                container
         }
-    }
-    
-    private var group: some View {
-        Group {
-            if #available(iOS 14.0, *) {
-                container
-                    .ignoresSafeArea(.container, edges: .bottom)
-            } else {
-                container
-                    .edgesIgnoringSafeArea(.bottom)
-            }
-        }.transition(isiPad ? AnyTransition.opacity.combined(with: .offset(x: 0, y: 200)) : .move(edge: .bottom))
     }
     
     private var container: some View {
