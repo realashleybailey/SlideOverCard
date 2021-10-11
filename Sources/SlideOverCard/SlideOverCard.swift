@@ -44,21 +44,23 @@ public struct SlideOverCard<Content: View>: View {
     public var body: some View {
         ZStack {
             if isPresented.wrappedValue {
-
-            if !options.contains(.tapToHide) {
-                Color.black.opacity(0.3)
-                    .edgesIgnoringSafeArea(.all)
-                    .transition(.opacity)
-                    .zIndex(1)
-            } else {
-                Color.black.opacity(0.3)
-                    .edgesIgnoringSafeArea(.all)
-                    .transition(.opacity)
-                    .zIndex(1)
-                    .onTapGesture {
-                        dismiss()
+                
+                if !options.contains(.noBackground) {
+                    if !options.contains(.tapToHide) {
+                        Color.black.opacity(0.3)
+                            .edgesIgnoringSafeArea(.all)
+                            .transition(.opacity)
+                            .zIndex(1)
+                    } else {
+                        Color.black.opacity(0.3)
+                            .edgesIgnoringSafeArea(.all)
+                            .transition(.opacity)
+                            .zIndex(1)
+                            .onTapGesture {
+                                dismiss()
+                            }
                     }
-            }
+                }
                 
                 Group {
                     if #available(iOS 14.0, *) {
@@ -137,6 +139,7 @@ public struct SOCOptions: OptionSet {
     public static let disableDragToDismiss = SOCOptions(rawValue: 1 << 1)
     public static let hideExitButton = SOCOptions(rawValue: 1 << 2)
     public static let tapToHide = SOCOptions(rawValue: 1 << 3)
+    public static let noBackground = SOCOptions(rawValue: 1 << 4)
 }
 
 struct SlideOverCard_Previews: PreviewProvider {
