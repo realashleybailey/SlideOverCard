@@ -42,39 +42,45 @@ public struct SlideOverCard<Content: View>: View {
     }
     
     public var body: some View {
-        ZStack {
-            if isPresented.wrappedValue {
-                
-                if !options.contains(.noBackground) {
-                    if !options.contains(.tapToHide) {
-                        Color.black.opacity(0.3)
-                            .edgesIgnoringSafeArea(.all)
-                            .transition(.opacity)
-                            .zIndex(1)
-                    } else {
-                        Color.black.opacity(0.3)
-                            .edgesIgnoringSafeArea(.all)
-                            .transition(.opacity)
-                            .zIndex(1)
-                            .onTapGesture {
-                                dismiss()
-                            }
+        if !options.contains(.noZStack) {
+            ZStack {
+                if isPresented.wrappedValue {
+                    
+                    if !options.contains(.noBackground) {
+                        if !options.contains(.tapToHide) {
+                            Color.black.opacity(0.3)
+                                .edgesIgnoringSafeArea(.all)
+                                .transition(.opacity)
+                                .zIndex(1)
+                        } else {
+                            Color.black.opacity(0.3)
+                                .edgesIgnoringSafeArea(.all)
+                                .transition(.opacity)
+                                .zIndex(1)
+                                .onTapGesture {
+                                    dismiss()
+                                }
+                        }
                     }
+                    
+                    group.zIndex(2)
                 }
-                
-                Group {
-                    if #available(iOS 14.0, *) {
-                        container
-                            .ignoresSafeArea(.container, edges: .bottom)
-                    } else {
-                        container
-                            .edgesIgnoringSafeArea(.bottom)
-                    }
-                }.transition(isiPad ? AnyTransition.opacity.combined(with: .offset(x: 0, y: 200)) : .move(edge: .bottom))
-                    .zIndex(2)
+            }.animation(.spring(response: 0.35, dampingFraction: 1))
+        } else {
+            group
+        }
+    }
+    
+    private var group: some View {
+        Group {
+            if #available(iOS 14.0, *) {
+                container
+                    .ignoresSafeArea(.container, edges: .bottom)
+            } else {
+                container
+                    .edgesIgnoringSafeArea(.bottom)
             }
-        }.animation(.spring(response: 0.35, dampingFraction: 1))
-            .allowsHitTesting(!options.contains(.noBackground))
+        }.transition(isiPad ? AnyTransition.opacity.combined(with: .offset(x: 0, y: 200)) : .move(edge: .bottom))
     }
     
     private var container: some View {
@@ -141,6 +147,7 @@ public struct SOCOptions: OptionSet {
     public static let hideExitButton = SOCOptions(rawValue: 1 << 2)
     public static let tapToHide = SOCOptions(rawValue: 1 << 3)
     public static let noBackground = SOCOptions(rawValue: 1 << 4)
+    public static let noZStack = SOCOptions(rawValue: 1 << 5)
 }
 
 struct SlideOverCard_Previews: PreviewProvider {
