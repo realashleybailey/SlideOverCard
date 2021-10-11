@@ -74,6 +74,7 @@ public struct SlideOverCard<Content: View>: View {
                     .zIndex(2)
             }
         }.animation(.spring(response: 0.35, dampingFraction: 1))
+            .allowsHitTesting(options.contains(.noBackground))
     }
     
     private var container: some View {
